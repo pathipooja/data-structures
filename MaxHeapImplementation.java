@@ -42,7 +42,7 @@ public class MaxHeapImplementation {
         if(pos!=temp)        
             heapify(arr,n,temp);
     }
-  private void swap(int[] arr,int i,int j)
+   void swap(int[] arr,int i,int j)
     {
         int temp;
         temp = arr[i];
@@ -51,10 +51,12 @@ public class MaxHeapImplementation {
     }
     
   void heapsort(int[] arr,int n){
-  for(int i=n-1;i>=0;i--){
-  swap(arr,arr[0],arr[i]);
-  heapify(arr,i,0);
-  }
+       buildHeap(arr,n);
+        for(int i=n-1;i>=0;i--)
+        {
+        swap(arr,0,i);
+        heapify(arr,i,0);
+        }
   }
   
     public static void main(String args[])
@@ -63,6 +65,13 @@ public class MaxHeapImplementation {
         int heapArray[]={20,7,8,10,15,5,6};
         int n=heapArray.length;
         mheap.buildHeap(heapArray,n);
+        //printing the max heap built
+        for(int i=0;i<n;i++)
+        {
+        System.out.println(heapArray[i]);
+        }
+        mheap.heapsort(heapArray,n);
+        //performing heap sort
         for(int i=0;i<n;i++)
         {
         System.out.println(heapArray[i]);
